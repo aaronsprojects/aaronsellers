@@ -1,0 +1,261 @@
+
+
+local function Notification(msg)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Cash on the ground";
+        Text = msg;
+        Icon = "rbxassetid://0";
+        Duration = 5;
+    })
+end
+
+function comma_value(amount)
+    local formatted = amount
+    while true do  
+      formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+      if (k==0) then
+        break
+      end
+    end
+    return formatted
+  end
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
+
+local Window = Library:CreateWindow("discord.gg/kfccash")
+
+local folder = Window:AddFolder('Main')
+local Teleports = Window:AddFolder('Teleports')
+local Cash = Window:AddFolder('Cash Stuff')
+local Danger = Window:AddFolder("Danger")
+Cash:AddButton({text = "Show Cash On Floor", callback = function()
+    
+local BukiHax = Instance.new("ScreenGui")
+local BukiFrame = Instance.new("Frame")
+local BukiLabel = Instance.new("TextLabel")
+
+BukiHax.Name = "BukiHax"
+BukiHax.Parent = game.CoreGui
+BukiHax.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+BukiFrame.Name = "BukiFrame"
+BukiFrame.Parent = BukiHax
+BukiFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BukiFrame.Position = UDim2.new(0.837378621, 0, 0.52241385, 0)
+BukiFrame.Size = UDim2.new(0, 201, 0, 100)
+
+BukiLabel.Name = "BukiLabel"
+BukiLabel.Parent = BukiFrame
+BukiLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BukiLabel.Size = UDim2.new(0, 200, 0, 100)
+BukiLabel.Font = Enum.Font.SourceSans
+BukiLabel.Text = "Cash"
+BukiLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+BukiLabel.TextScaled = true
+BukiLabel.TextSize = 14.000
+BukiLabel.TextWrapped = true
+
+-- Scripts:
+
+local function CXGRB_fake_script() -- BukiFrame.BukiScript 
+	local script = Instance.new('LocalScript', BukiFrame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(CXGRB_fake_script)()
+        while wait(1) do 
+        Cash = 0;
+        for Index, Value in pairs(game:GetService("Workspace").Ignored.Drop:GetChildren()) do
+            if Value.Name == "MoneyDrop" and Value:IsA("Part") then
+                if Value.BillboardGui.TextLabel.Text == "$7,000" then
+                    Cash = Cash + 7000;
+                end
+            end
+        end
+        local Commed = comma_value(Cash)
+        BukiLabel.Text = tostring("$" .. tostring(Commed))
+    end
+end})
+folder:AddButton({text = 'Fly [X]', callback = function() 
+
+    local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+
+localplayer = plr
+
+if workspace:FindFirstChild("Core") then
+workspace.Core:Destroy()
+end
+
+local Core = Instance.new("Part")
+Core.Name = "Core"
+Core.Size = Vector3.new(0.05, 0.05, 0.05)
+
+spawn(function()
+Core.Parent = workspace
+local Weld = Instance.new("Weld", Core)
+Weld.Part0 = Core
+Weld.Part1 = localplayer.Character.LowerTorso
+Weld.C0 = CFrame.new(0, 0, 0)
+end)
+
+workspace:WaitForChild("Core")
+
+local torso = workspace.Core
+flying = true
+local speed=10
+local keys={a=false,d=false,w=false,s=false}
+local e1
+local e2
+local function start()
+local pos = Instance.new("BodyPosition",torso)
+local gyro = Instance.new("BodyGyro",torso)
+pos.Name="EPIXPOS"
+pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+pos.position = torso.Position
+gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+gyro.cframe = torso.CFrame
+repeat
+wait()
+localplayer.Character.Humanoid.PlatformStand=true
+local new=gyro.cframe - gyro.cframe.p + pos.position
+if not keys.w and not keys.s and not keys.a and not keys.d then
+speed=5
+end
+if keys.w then
+new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+speed=speed+0
+end
+if keys.s then
+new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+speed=speed+0
+end
+if keys.d then
+new = new * CFrame.new(speed,0,0)
+speed=speed+0
+end
+if keys.a then
+new = new * CFrame.new(-speed,0,0)
+speed=speed+0
+end
+if speed>10 then
+speed=5
+end
+pos.position=new.p
+if keys.w then
+gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+elseif keys.s then
+gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+else
+gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+end
+until flying == false
+if gyro then gyro:Destroy() end
+if pos then pos:Destroy() end
+flying=false
+localplayer.Character.Humanoid.PlatformStand=false
+speed=10
+end
+e1=mouse.KeyDown:connect(function(key)
+if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+if key=="w" then
+keys.w=true
+elseif key=="s" then
+keys.s=true
+elseif key=="a" then
+keys.a=true
+elseif key=="d" then
+keys.d=true
+elseif key=="x" then
+if flying==true then
+flying=false
+else
+flying=true
+start()
+end
+end
+end)
+e2=mouse.KeyUp:connect(function(key)
+if key=="w" then
+keys.w=false
+elseif key=="s" then
+keys.s=false
+elseif key=="a" then
+keys.a=false
+elseif key=="d" then
+keys.d=false
+end
+end)
+start()
+end})
+Teleports:AddButton({text = 'Bank', callback = function() 
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-416.303558, 35.5479851, -289.669495)
+    
+end})
+Teleports:AddButton({text = 'Basketball park', callback = function() 
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-932.562439, 35.0978241, -482.280914) 
+end})
+local Dropped = 0;
+Cash:AddToggle({text = "Drop Cash", callback = function(v)
+    if v then 
+        Render = game:GetService("RunService").RenderStepped:Connect(function()
+            local args = {[1] = "DropMoney",[2] = tostring(Dropped)}
+            game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
+        end)
+    else
+        Render:Disconnect()
+    end
+end})
+Cash:AddSlider({text = 'Amount To Drop', min = 1, max = 10000, callback = function(v)
+     print(v) 
+     Dropped = v;
+end})
+Danger:AddButton({text = 'Crash', callback = function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DropperWhitelister/KFC-Sellers/main/kfccrasher.lua"))()
+end})
+
+--[[
+folder:AddBox({text = 'text box', callback = function(v)
+    print(v) 
+end})
+]]--
+-- 
+
+Library:Init()
