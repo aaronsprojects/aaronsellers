@@ -6,7 +6,8 @@ local mods = {171832854,
 	171832169,
 	2526537975,
 	2025867999,
-	2747858499,}
+	2747858499,
+}
 
 local player = game.Players.LocalPlayer
 local function kfcshop()
