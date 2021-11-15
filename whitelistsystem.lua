@@ -9,7 +9,6 @@ local mods = {
 	2025867999,
 	2747858499,
 }
-
 local player = game.Players.LocalPlayer
 local function kfcshop()
 	for i,v in pairs(game.Players:GetChildren()) do
