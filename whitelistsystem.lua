@@ -3,8 +3,7 @@ local joemomma = {
 		171832854,
 }
 
-local mods = {171832854,171832169,2526537975,2025867999, 2747858499,500685013
-}
+local mods = {171832854,171832169,2526537975,2025867999, 2747858499,500685013}
 	
 local player = game.Players.LocalPlayer
 local function kfcshop()
