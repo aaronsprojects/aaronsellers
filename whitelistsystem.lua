@@ -6,7 +6,7 @@ local joemomma = {
 	2747858499,
 }
 
-local mods = {}
+local mods = {2059876362,}
 
 local player = game.Players.LocalPlayer
 local function kfcshop()
