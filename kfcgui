@@ -21,7 +21,7 @@ function comma_value(amount)
   end
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/un-named%20backups/jans", true))()
 
-local Window = Library:CreateWindow("dsc.gg/kingsdhc")
+local Window = Library:CreateWindow("https://discord.gg/Pkwb45Vsvt")
 
 local folder = Window:AddFolder('Main')
 local Teleports = Window:AddFolder('Teleports')
@@ -247,7 +247,7 @@ Cash:AddSlider({text = 'Amount To Drop', min = 1, max = 10000, callback = functi
      print(v) 
      Dropped = v;
 end})
-Danger:AddButton({text = 'Crash', callback = function() 
+Danger:AddButton({text = 'Crash (Patched)', callback = function() 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/aaronsprojects/aaronsellers/main/kfccrasher.lua"))()
 end})
 
